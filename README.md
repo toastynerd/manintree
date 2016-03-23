@@ -1,3 +1,3 @@
-Seattle Man In Tree Website
+Seattle Man (Formerly) In Tree Website
 ===========================
-The officially unofficial site of the Seattle Man in Tree.
+The officially unofficial site of the Seattle Man (Formerly) in Tree.
