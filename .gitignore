@@ -1,2 +1,4 @@
 **/*.sw?
 nodemodules/
+node_modules
+dump.rdb
