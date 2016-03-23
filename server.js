@@ -50,9 +50,10 @@ twitterClient.stream('statuses/filter', {track: 'manintree'}, (stream) => {
 });
 
 setInterval(() => {redisClient.ltrim('tweets', 1000);}, 100000);
+
 app.use(express.static(__dirname + '/app'));
 app.use((req, res) => {
-  res.status(404).send(__dirname + '/app/four_oh_four.html');
+  res.status(404).sendFile(__dirname + '/app/four_oh_four.html');
 });
 
 http.listen(port, () => console.log('server up on port ' + port));
