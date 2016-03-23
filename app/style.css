@@ -24,6 +24,7 @@ ul {
 }
 
 li {
+  min-height: 2em;
   background-color: #FFF;
   padding: 0.5em;
   border-radius: .4em;
