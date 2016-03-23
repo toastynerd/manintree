@@ -49,7 +49,7 @@ twitterClient.stream('statuses/filter', {track: 'manintree'}, (stream) => {
   });
 });
 
-setInterval(() => {redisClient.ltrim('tweets', 1000);}, 100000);
+setInterval(() => {redisClient.ltrim('tweets', 0, 1000);}, 100000);
 
 app.use(express.static(__dirname + '/app'));
 app.use((req, res) => {
