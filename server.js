@@ -49,11 +49,7 @@ twitterClient.stream('statuses/filter', {track: 'manintree'}, (stream) => {
   });
 });
 
-var fourOhFour = function(res) {
-  res.writeHead(404, {'Content-Type': 'text/html'});
-  fs.createReadStream(__dirname + '/app/four_oh_four.html').pipe(res);
-};
-
+setInterval(() => {redisClient.ltrim('tweets', 1000);}, 100000);
 app.use(express.static(__dirname + '/app'));
 app.use((req, res) => {
   res.status(404).send(__dirname + '/app/four_oh_four.html');
