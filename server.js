@@ -1,4 +1,6 @@
-const http = require('http');
+const express = require('express');
+const app = express();
+const http = require('http').Server(app);
 const fs = require('fs');
 const redis = require('redis');
 const Twitter = require('twitter');
@@ -26,7 +28,8 @@ twitterClient.get('search/tweets', {q: 'manintree'}, (err, tweets) => {
 });
 
 io.on('connection', (connection) => {
-  redis.lrange(0, 100, (tweets) => {
+  redisClient.lrange('tweets', 0, 100, (err, tweets) => {
+    if(err) return console.log(err);
     var parsedTweets = tweets.map((tweet) => {
       return JSON.parse(tweet);
     });
@@ -51,15 +54,9 @@ var fourOhFour = function(res) {
   fs.createReadStream(__dirname + '/app/four_oh_four.html').pipe(res);
 };
 
-http.createServer((req, res) => {
-  if (req.method !== 'GET')
-    return fourOhFour(res);
+app.use(express.static(__dirname + '/app'));
+app.use((req, res) => {
+  res.status(404).send(__dirname + '/app/four_oh_four.html');
+});
 
-  var filePath = __dirname + '/app' + (req.url === '/' ? '/index.html' : req.url);
-  fs.stat(filePath, (err, stats) => {
-    if (err || !(stats.isFile()))
-      return fourOhFour(res);
-
-    fs.createReadStream(filePath).pipe(res);
-  });
-}).listen(port, () => console.log('server up on port ' + port));
+http.listen(port, () => console.log('server up on port ' + port));
