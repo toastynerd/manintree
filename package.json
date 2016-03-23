@@ -1,0 +1,28 @@
+{
+  "name": "seattlemanintree",
+  "version": "1.0.0",
+  "description": "Seattle Man In Tree Website =========================== The officially unofficial site of the Seattle Man in Tree.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "redis": "^2.5.3",
+    "socket.io": "^1.4.5",
+    "twitter": "^1.2.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toastynerd/manintree.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toastynerd/manintree/issues"
+  },
+  "homepage": "https://github.com/toastynerd/manintree#readme"
+}
