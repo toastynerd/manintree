@@ -28,10 +28,17 @@ li {
   padding: 0.5em;
   border-radius: .4em;
   margin: 0.5em;
+  clear: left;
 }
 
 img {
-  float: left;
+  padding-left: 0.1em;
+  display: inline-block;
+}
+
+p {
+  width: 90%;
+  float: right;
 }
 
 @media screen and (min-width: 600px) {
